@@ -5,15 +5,8 @@ services:
     build: ./nginx
     ports:
       - 80:80
-    networks:
-      - nginxtonode
   nodejsserver:
     image: itzzjb/nodejsserver
     build: ./server
     ports:
       - 3000:3000
-    networks:
-      - nginxtonode
-networks:
-  nginxtonode:
-    driver: bridge
