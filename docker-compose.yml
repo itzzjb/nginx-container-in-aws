@@ -2,6 +2,7 @@ version: "3"
 services:
   nginxproxy:
     image: itzzjb/nginxproxy
+    build: ./nginx
     ports:
       - 80:80
     depends_on:
@@ -10,5 +11,6 @@ services:
       - nodejsserver
   nodejsserver:
     image: itzzjb/nodejsserver
+    build: ./server
     ports:
       - 3000:3000
