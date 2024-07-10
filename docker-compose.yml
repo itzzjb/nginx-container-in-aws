@@ -1,0 +1,14 @@
+version: "3"
+services:
+  nginxproxy:
+    image: itzzjb/nginxproxy
+    ports:
+      - 80:80
+    depends_on:
+      - nodejsserver
+    links:
+      - nodejsserver
+  nodejsserver:
+    image: itzzjb/nodejsapp
+    ports:
+      - 3000:3000
