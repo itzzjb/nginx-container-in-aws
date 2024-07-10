@@ -9,6 +9,6 @@ services:
     links:
       - nodejsserver
   nodejsserver:
-    image: itzzjb/nodejsapp
+    image: itzzjb/nodejsserver
     ports:
       - 3000:3000
