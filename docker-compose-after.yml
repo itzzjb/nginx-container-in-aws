@@ -1,0 +1,14 @@
+version: "3"
+services:
+  nginxproxy:
+    image: itzzjb/nginxproxy
+    # build: ./nginx
+    ports:
+      - 80:80
+  nodejsserver:
+    image: itzzjb/nodejsserver
+    # build: ./server
+    ports:
+      - 3000:3000
+# Commented out the build section because we are only going to pull the images from Docker Hub. We will not be building the images locally. (In AWS Instances)
+# https://chatgpt.com/share/4e77cc1d-260e-4659-931c-419a54aef7cb

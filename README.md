@@ -28,3 +28,14 @@ Now, to see the changes we are going to reload the nginx inside the nginx contai
 ```sh
 docker exec nginxproxy nginx -s reload
 ```
+
+## Copying the docker-compose file into the AWS ec2 instance
+
+First we need to setup the ec2 instance by installing docker and docker-compose.
+[ Click here](https://tejaksha-k.medium.com/how-to-install-docker-and-docker-compose-to-ubuntu-20-04-azure-vm-and-aws-ec2-instances-72a498755c15)
+
+Open the terminal from the folder where the pem file is, and copy the local file to the ec2 instance using a command similar to the below command.
+
+```sh
+ scp -i "docker.pem" /Users/janudabethmin/Desktop/nginx-container-in-aws/docker-compose.yml  ubuntu@ec2-3-82-220-118.compute-1.amazonaws.com:/home/ubuntu/
+```
