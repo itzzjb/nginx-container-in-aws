@@ -1,19 +1,32 @@
+# We will start from a node.js base image
 FROM node:lts-alpine3.20
 
+# Create a directory to hold the application code inside the image
 WORKDIR /usr/src/app
 
 # By setting NODE_ENV to production, it will install only production dependencies. Dev dependencies will not be installed.
 ENV NODE_ENV=production
 
+# Copy package.json and package-lock.json to the image
 COPY ./package*.json /usr/src/app
-
+ 
 # By adding --production flag, it will install only production dependencies.
-RUN npm install --production
+# We can use npm ci instead of npm install to install the dependencies faster.
+# When using ci, the node_modules directory will be deleted and recreated acording to the package-lock.json file.
+# If we don't have the package-lock.json file of if the package-lock.json and package.json files are out of sync, it will fail.
+# Package-lock.json file is created when we run npm install.
+# And when using package-lock.json file instead of package.json file, we can be sure that the dependencies are the same as the last time we ran npm install.
+# When using npm install, the node_modules directory will be updated (added and removed on changes done) according to the package.json file.
+# The word ci stands for clean-install.
+RUN npm ci --production
 
+# Copy the rest of the application code to the image
 COPY ./ /usr/src/app
 
+# Expose the port that the app runs on
 EXPOSE 3000
 
+# Start the application
 CMD ["npm","start"] 
 
 
