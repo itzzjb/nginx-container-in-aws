@@ -39,3 +39,8 @@ Open the terminal from the folder where the pem file is, and copy the local file
 ```sh
  scp -i "docker.pem" /Users/janudabethmin/Desktop/nginx-container-in-aws/docker-compose.yml  ubuntu@ec2-3-82-220-118.compute-1.amazonaws.com:/home/ubuntu/
 ```
+
+Now we can use this file to run the container by pulling the images from docker hub registry.
+
+> [!CAUTION]
+> But because I have a M1 Mac, and the images built on my M1 Mac will not work on an AWS instance. I will have to build the images on the AWS instance in order to those images to support in a AWS ec2 instance. So, either I would need to upload all the files to the AWS instance using scp or clone a git repository from the AWS instance and run the docker compose file while building the images locally using the Dockerfiles.
