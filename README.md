@@ -1,5 +1,5 @@
 > [!NOTE]
-> Remember to link (with a link or a network) both nginx container and nodejs container in order them to work.
+> Remember to link (with a link or a network) both nginx container and nodejs container in order them to work. If you are using a docker-compose file of version 3 the links will be automatically created by the bridge network.
 
 # Creating a new image out of a container without a Dockerfile
 
